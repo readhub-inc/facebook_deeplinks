@@ -6,6 +6,7 @@ let MESSAGES_CHANNEL = "ru.proteye/facebook_deeplinks/channel"
 let EVENTS_CHANNEL = "ru.proteye/facebook_deeplinks/events"
 
 public class SwiftFacebookDeeplinksPlugin: NSObject, FlutterPlugin, FlutterStreamHandler {
+
     private var latestLink: String?
     private var eventSink: FlutterEventSink?
 
@@ -42,7 +43,7 @@ public class SwiftFacebookDeeplinksPlugin: NSObject, FlutterPlugin, FlutterStrea
         return true
     }
 
-    public func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+    public func application(_ application: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
         return self.handleLink(url.absoluteString)
     }
 
@@ -54,8 +55,8 @@ public class SwiftFacebookDeeplinksPlugin: NSObject, FlutterPlugin, FlutterStrea
         }
     }
 
-    public func onListen(withArguments arguments: Any?, eventSink: @escaping FlutterEventSink) -> FlutterError? {
-        self.eventSink = eventSink
+    public func onListen(withArguments arguments: Any?, eventSink events: @escaping FlutterEventSink) -> FlutterError? {
+        eventSink = events
         return nil
     }
 
