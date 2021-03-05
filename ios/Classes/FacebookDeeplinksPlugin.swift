@@ -5,13 +5,13 @@ import FBSDKCoreKit
 let MESSAGES_CHANNEL = "ru.proteye/facebook_deeplinks/channel"
 let EVENTS_CHANNEL = "ru.proteye/facebook_deeplinks/events"
 
-public class SwiftFacebookDeeplinksPlugin: NSObject, FlutterPlugin, FlutterStreamHandler {
+public class FacebookDeeplinksPlugin: NSObject, FlutterPlugin, FlutterStreamHandler {
 
     private var latestLink: String?
     private var eventSink: FlutterEventSink?
 
     public static func register(with registrar: FlutterPluginRegistrar) {
-        let instance = SwiftFacebookDeeplinksPlugin()
+        let instance = FacebookDeeplinksPlugin()
 
         let channel = FlutterMethodChannel(name: MESSAGES_CHANNEL, binaryMessenger: registrar.messenger())
         registrar.addMethodCallDelegate(instance, channel: channel)
